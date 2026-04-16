@@ -1,22 +1,32 @@
 .darkmode {
   cursor: pointer;
-  padding: 0;
+  padding: 8px;
   position: relative;
-  background: none;
-  border: none;
-  width: 20px;
-  height: 32px;
+  background: transparent;
+  border: 1px solid var(--lightgray);
+  border-radius: 20px;
+  width: 36px;
+  height: 36px;
   margin: 0;
-  text-align: inherit;
+  text-align: center;
   flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: var(--highlight);
+    border-color: var(--secondary);
+    transform: rotate(15deg);
+  }
 
   & svg {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    top: calc(50% - 10px);
-    fill: var(--darkgray);
-    transition: opacity 0.1s ease;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: var(--secondary);
+    transition: all 0.3s ease;
   }
 }
 

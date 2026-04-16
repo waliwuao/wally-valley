@@ -37,10 +37,6 @@ export interface Theme {
 
 export type ThemeKey = keyof Colors
 
-const DEFAULT_SANS_SERIF =
-  'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-const DEFAULT_MONO = "ui-monospace, SFMono-Regular, SF Mono, Menlo, monospace"
-
 export function getFontSpecificationName(spec: FontSpecification): string {
   if (typeof spec === "string") {
     return spec
@@ -86,12 +82,14 @@ function formatFontSpecification(
 }
 
 export function googleFontHref(theme: Theme) {
-  const { header, body, code } = theme.typography
+  const { title, header, body, code } = theme.typography
+  const titleFont = formatFontSpecification("title", title || header)
   const headerFont = formatFontSpecification("header", header)
   const bodyFont = formatFontSpecification("body", body)
   const codeFont = formatFontSpecification("code", code)
+  const fallbackMono = formatFontSpecification("code", "Noto Sans Mono")
 
-  return `https://fonts.googleapis.com/css2?family=${headerFont}&family=${bodyFont}&family=${codeFont}&display=swap`
+  return `https://fonts.googleapis.com/css2?family=${titleFont}&family=${headerFont}&family=${bodyFont}&family=${codeFont}&family=${fallbackMono}&display=swap`
 }
 
 export function googleFontSubsetHref(theme: Theme, text: string) {
@@ -141,8 +139,28 @@ export async function processGoogleFonts(
 }
 
 export function joinStyles(theme: Theme, ...stylesheet: string[]) {
+  const monoWithChinese = '"JetBrains Mono", "Noto Sans Mono CJK SC", "Source Han Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo, monospace'
+  const serifChinese = '"LXGW WenKai", "Noto Serif SC", "Songti SC", "SimSun", serif'
+  const titleWithChinese = '"Great Vibes", cursive'
+  const headerWithChinese = '"LXGW WenKai", "Noto Serif SC", "Songti SC", "SimSun", serif'
   return `
 ${stylesheet.join("\n\n")}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('/static/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('/static/fonts/LXGWWenKai-Medium.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --light: ${theme.colors.lightMode.light};
@@ -155,10 +173,10 @@ ${stylesheet.join("\n\n")}
   --highlight: ${theme.colors.lightMode.highlight};
   --textHighlight: ${theme.colors.lightMode.textHighlight};
 
-  --titleFont: "${getFontSpecificationName(theme.typography.title || theme.typography.header)}", ${DEFAULT_SANS_SERIF};
-  --headerFont: "${getFontSpecificationName(theme.typography.header)}", ${DEFAULT_SANS_SERIF};
-  --bodyFont: "${getFontSpecificationName(theme.typography.body)}", ${DEFAULT_SANS_SERIF};
-  --codeFont: "${getFontSpecificationName(theme.typography.code)}", ${DEFAULT_MONO};
+  --titleFont: ${titleWithChinese};
+  --headerFont: "${getFontSpecificationName(theme.typography.header)}", ${headerWithChinese};
+  --bodyFont: "${getFontSpecificationName(theme.typography.body)}", ${serifChinese};
+  --codeFont: "${getFontSpecificationName(theme.typography.code)}", ${monoWithChinese};
 }
 
 :root[saved-theme="dark"] {

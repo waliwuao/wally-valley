@@ -15,9 +15,22 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
 
 PageTitle.css = `
 .page-title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin: 0;
   font-family: var(--titleFont);
+  color: var(--dark);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  
+  a {
+    transition: all 0.25s ease;
+    
+    &:hover {
+      color: var(--tertiary);
+      transform: translateX(3px);
+      display: inline-block;
+    }
+  }
 }
 `
 

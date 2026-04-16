@@ -21,6 +21,9 @@ body {
   background-color: var(--light);
   font-family: var(--bodyFont);
   color: var(--darkgray);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
 }
 
 .text-highlight {
@@ -29,8 +32,8 @@ body {
   border-radius: 5px;
 }
 ::selection {
-  background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
-  color: var(--darkgray);
+  background: color-mix(in srgb, var(--secondary) 40%, rgba(255, 255, 255, 0));
+  color: var(--dark);
 }
 
 p,
@@ -84,7 +87,7 @@ strong {
 a {
   font-weight: $semiBoldWeight;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--secondary);
 
   &:hover {
@@ -347,10 +350,15 @@ input[type="checkbox"] {
 }
 
 blockquote {
-  margin: 1rem 0;
-  border-left: 3px solid var(--secondary);
-  padding-left: 1rem;
-  transition: border-color 0.2s ease;
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--tertiary);
+  padding-left: 1.2rem;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  
+  &:hover {
+    border-left-color: var(--secondary);
+    transform: translateX(2px);
+  }
 }
 
 h1,
@@ -397,21 +405,26 @@ h6 {
 
 // typography improvements
 h1 {
-  font-size: 1.75rem;
-  margin-top: 2.25rem;
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: 1.4rem;
-  margin-top: 1.9rem;
-  margin-bottom: 1rem;
+  font-size: 1.45rem;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 h3 {
-  font-size: 1.12rem;
-  margin-top: 1.62rem;
-  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
 }
 
 h4,
@@ -419,7 +432,8 @@ h5,
 h6 {
   font-size: 1rem;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 figure[data-rehype-pretty-code-figure] {
@@ -447,10 +461,16 @@ figure[data-rehype-pretty-code-figure] {
 pre {
   font-family: var(--codeFont);
   padding: 0 0.5rem;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow-x: auto;
   border: 1px solid var(--lightgray);
   position: relative;
+  transition: all 0.25s ease;
+  
+  &:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 4px 12px rgba(166, 123, 91, 0.1);
+  }
 
   &:has(> code.mermaid) {
     border: none;
@@ -488,7 +508,7 @@ pre {
         margin-right: 1rem;
         display: inline-block;
         text-align: right;
-        color: rgba(115, 138, 148, 0.6);
+        color: rgba(139, 115, 85, 0.6);
       }
     }
 
@@ -506,9 +526,15 @@ code {
   font-size: 0.9em;
   color: var(--dark);
   font-family: var(--codeFont);
-  border-radius: 5px;
-  padding: 0.1rem 0.2rem;
+  border-radius: 4px;
+  padding: 0.15rem 0.35rem;
   background: var(--lightgray);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--highlight);
+    color: var(--secondary);
+  }
 }
 
 tbody,
@@ -519,10 +545,17 @@ p {
 
 .table-container {
   overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--lightgray);
+  transition: all 0.25s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
 
   & > table {
-    margin: 1rem;
-    padding: 1.5rem;
+    margin: 0;
+    padding: 1rem;
     border-collapse: collapse;
 
     th,
@@ -616,9 +649,10 @@ ol.overflow {
 }
 
 .katex-display {
-  display: initial;
+  display: block;
   overflow-x: auto;
   overflow-y: hidden;
+  text-align: center;
 }
 
 .external-embed.youtube,
@@ -635,7 +669,8 @@ iframe.pdf {
   left: 0;
   width: 0;
   height: 3px;
-  background: var(--secondary);
-  transition: width 0.2s ease;
+  background: linear-gradient(90deg, var(--secondary), var(--tertiary));
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 9999;
+  border-radius: 0 2px 2px 0;
 }

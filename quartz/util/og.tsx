@@ -88,7 +88,35 @@ export async function fetchTtf(
     // ignore errors and fetch font
   }
 
-  // Get css file from google fonts
+  // First check if it's a local font (LXGW WenKai)
+  // QUARTZ is "quartz" so path is quartz/static/fonts
+  const localFontBase = path.join(QUARTZ, "static", "fonts")
+  let localFontPath: string | null = null
+
+  const fontNameLower = fontName.toLowerCase()
+  if (fontNameLower.includes("lxgw") || fontNameLower.includes("wenkai")) {
+    if (weight <= 400) {
+      localFontPath = path.join(localFontBase, "LXGWWenKai-Regular.ttf")
+    } else {
+      localFontPath = path.join(localFontBase, "LXGWWenKai-Medium.ttf")
+    }
+  }
+
+  if (localFontPath) {
+    try {
+      await fs.access(localFontPath)
+      const data = await fs.readFile(localFontPath)
+      await fs.mkdir(cacheDir, { recursive: true })
+      await fs.writeFile(cachePath, data)
+      return data
+    } catch (error) {
+      console.log(
+        styleText("yellow", `\nWarning: Local font not found at ${localFontPath}, falling back to Google Fonts`),
+      )
+    }
+  }
+
+  // Fallback to Google Fonts
   const cssResponse = await fetch(
     `https://fonts.googleapis.com/css2?family=${fontName}:wght@${weight}`,
   )

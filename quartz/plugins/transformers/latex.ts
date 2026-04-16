@@ -24,7 +24,7 @@ interface MacroType {
 }
 
 export const Latex: QuartzTransformerPlugin<Partial<Options>> = (opts) => {
-  const engine = opts?.renderEngine ?? "katex"
+  const engine = opts?.renderEngine ?? "mathjax"
   const macros = opts?.customMacros ?? {}
   return {
     name: "Latex",
@@ -60,12 +60,70 @@ export const Latex: QuartzTransformerPlugin<Partial<Options>> = (opts) => {
       switch (engine) {
         case "katex":
           return {
-            css: [{ content: "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" }],
+            css: [{ content: "https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" }],
             js: [
               {
-                // fix copy behaviour: https://github.com/KaTeX/KaTeX/blob/main/contrib/copy-tex/README.md
-                src: "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js",
+                src: "https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js",
                 loadTime: "afterDOMReady",
+                contentType: "external",
+              },
+              {
+                src: "https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js",
+                loadTime: "afterDOMReady",
+                contentType: "external",
+              },
+              {
+                src: "https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js",
+                loadTime: "afterDOMReady",
+                contentType: "external",
+              },
+              {
+                script: `
+                  document.addEventListener('DOMContentLoaded', function() {
+                    renderMathInElement(document.body, {
+                      delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\\\[', right: '\\\\]', display: true},
+                        {left: '\\\\(', right: '\\\\)', display: false}
+                      ],
+                      throwOnError: false
+                    });
+                  });
+                `,
+                loadTime: "afterDOMReady",
+                contentType: "inline",
+              },
+            ],
+          }
+        case "mathjax":
+          return {
+            js: [
+              {
+                script: `
+                  window.MathJax = {
+                    tex: {
+                      inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+                      displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
+                      processEscapes: true,
+                      macros: ${JSON.stringify(macros)}
+                    },
+                    startup: {
+                      ready: function() {
+                        MathJax.startup.defaultReady();
+                        MathJax.startup.promise.then(function() {
+                          document.dispatchEvent(new Event('MathJaxReady'));
+                        });
+                      }
+                    }
+                  };
+                `,
+                loadTime: "beforeDOMReady",
+                contentType: "inline",
+              },
+              {
+                src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
+                loadTime: "beforeDOMReady",
                 contentType: "external",
               },
             ],

@@ -145,7 +145,7 @@ export function joinStyles(theme: Theme, ...stylesheet: string[]) {
   const headerWithChinese = '"LXGW WenKai", "Noto Serif SC", "Songti SC", "SimSun", serif'
 
   // 只有当 fontOrigin 为 "local" 时才生成 @font-face 规则
-  // 本地模式需要用户自行将字体文件放入 quartz/static/fonts/ 目录
+  // 使用项目中的完整中文字体文件 (TTF 格式)
   const localFontFace = theme.fontOrigin === "local" ? `
 @font-face {
   font-family: 'LXGW WenKai';
@@ -158,7 +158,7 @@ export function joinStyles(theme: Theme, ...stylesheet: string[]) {
 @font-face {
   font-family: 'LXGW WenKai';
   src: url('/static/fonts/LXGWWenKai-Medium.ttf') format('truetype');
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }

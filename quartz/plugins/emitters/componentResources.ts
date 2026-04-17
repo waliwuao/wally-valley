@@ -324,6 +324,7 @@ export const ComponentResources: QuartzEmitterPlugin = () => {
       addGlobalPageResources(ctx, componentResources)
 
       const stylesheet = joinStyles(
+        cfg.baseUrl,
         ctx.cfg.configuration.theme,
         googleFontsStyleSheet,
         ...componentResources.css,

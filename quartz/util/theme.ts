@@ -138,18 +138,21 @@ export async function processGoogleFonts(
   return { processedStylesheet, fontFiles }
 }
 
-export function joinStyles(theme: Theme, ...stylesheet: string[]) {
+export function joinStyles(baseUrl: string, theme: Theme, ...stylesheet: string[]) {
   const monoWithChinese = '"JetBrains Mono", "Noto Sans Mono CJK SC", "Source Han Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo, monospace'
   const serifChinese = '"LXGW WenKai", "Noto Serif SC", "Songti SC", "SimSun", serif'
   const titleWithChinese = '"Great Vibes", cursive'
   const headerWithChinese = '"LXGW WenKai", "Noto Serif SC", "Songti SC", "SimSun", serif'
+
+  // 构建字体路径前缀（如果 baseUrl 不为空，则添加 baseUrl 路径）
+  const fontPathPrefix = baseUrl ? `/${baseUrl}` : ""
 
   // 只有当 fontOrigin 为 "local" 时才生成 @font-face 规则
   // 使用 WOFF2 格式的字体文件（已压缩，比 TTF 小约 70%）
   const localFontFace = theme.fontOrigin === "local" ? `
 @font-face {
   font-family: 'LXGW WenKai';
-  src: url('/static/fonts/LXGWWenKai-Regular.woff2') format('woff2');
+  src: url('${fontPathPrefix}/static/fonts/LXGWWenKai-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -157,7 +160,7 @@ export function joinStyles(theme: Theme, ...stylesheet: string[]) {
 
 @font-face {
   font-family: 'LXGW WenKai';
-  src: url('/static/fonts/LXGWWenKai-Medium.woff2') format('woff2');
+  src: url('${fontPathPrefix}/static/fonts/LXGWWenKai-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;

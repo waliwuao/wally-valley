@@ -8,10 +8,32 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/waliwuao",
     },
   }),
+}
+
+// Homepage layout - cleaner, no right sidebar
+export const homepageLayout: PageLayout = {
+  beforeBody: [
+    Component.Breadcrumbs(),
+  ],
+  left: [
+    Component.PageTitle(),
+    Component.MobileOnly(Component.Spacer()),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+        { Component: Component.ReaderMode() },
+      ],
+    }),
+    Component.Explorer(),
+  ],
+  right: [],
 }
 
 // components for pages that display a single page (e.g. a single note)

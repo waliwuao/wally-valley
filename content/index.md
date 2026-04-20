@@ -1,115 +1,44 @@
 ---
-title: Quartz 功能测试
-tags:
-  - 测试
-  - 示例
-date: 2026-04-15
-math: true
+title: About
+layout: "page"
 ---
 
-# Quartz 功能测试页面
+<div align="center">
 
-# 你好，我是 Wali Wuao
+# 你好，我是 WaliWuao
 
-## 1. 标题层级
+****
 
-### 三级标题
-
-#### 四级标题
-
-##### 五级标题
-
-## 2. 文本格式
-
-**粗体文本** 和 *斜体文本* 以及 ***粗体斜体***
-
-~~删除线文字~~
-
-`行内代码` 示例
-
-## 3. 列表
-
-### 无序列表
-- 苹果
-- 香蕉
-  - 大香蕉
-  - 小香蕉
-- 橙子
-
-### 有序列表
-1. 第一步
-2. 第二步
-   1. 子步骤 A
-   2. 子步骤 B
-3. 第三步
-
-## 4. 链接和图片
-
-[Quartz 官方文档](https://quartz.jzhao.xyz)
-
-![示例图片占位符](https://via.placeholder.com/150)
-
-## 5. 引用
-
-> 这是一段引用内容。
-> 
-> 可以有多行。
-> 
-> > 嵌套引用
-
-## 6. 代码块
-
-```javascript
-function hello() {
-  console.log("Hello, Quartz!");
-  return {
-    success: true,
-    message: "测试成功"
-  };
-}
-
-hello();
-```
-
-```python
-def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
-
-for i in range(10):
-    print(f"F({i}) = {fibonacci(i)}")
-```
-
-## 7. 表格
-
-| 功能 | 状态 | 备注 |
-|------|------|------|
-| 标题 | ✅ | 正常 |
-| 列表 | ✅ | 正常 |
-| 代码 | ✅ | 正常 |
-| 表格 | ✅ | 正常 |
-
-## 8. 数学公式（如果支持）
-
-行内公式：$E = mc^2$
-
-独立公式：
-$$
-f(x) = \int_{-\infty}^\infty
-    f(\xi)e^{2 \pi i \xi x}
-    \,d\xi
-$$
-
-
-## 9. 水平线
+[ GitHub ](https://github.com/waliwuao) · [ 邮件联系 ](1276672206@qq.com)
 
 ---
 
-## 10. 链接到其他页面
+> **我困的时候会睡觉**
 
-- [[setting up your GitHub repository|部署指南]]
+</div>
+
+## 关于我
+
+我是 Waliwuao， 目前就读于SUSTech的计算机科学与工程系， 同时也在Robocon ARES战队做算法设计
+
+天生体育废体，偶尔逛逛海岸线，不社恐，但会社交疲劳。曾有轻度猫瘾，现有所改善
+
+每当我听到上勾拳免疫者、无法上吊之物、陆地蛄蛹者的叫声就会觉得如听仙乐耳暂明
 
 ---
 
-**最后更新：** 2026年4月15日
+<div align="center">
+
+### Contact Me
+
+如果你有任何问题，或者想针对某个技术话题进行交流，欢迎通过以下渠道找到我。
+
+Email:1276672206@qq.com
+qq:1276672206
+
+**饿的时候记得吃饭**
+
+---
+最后更新于：2026年4月
+
+</div>

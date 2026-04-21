@@ -1,4 +1,4 @@
-# Spinal-Vexriscv 项目复现指南
+# Spinal-Vexriscv project intro
 
 在数字逻辑课程的学习中，我曾被要求直接编写 Verilog，在开发板上实现一个矩阵乘法计算器。这是我截至目前做过的最糟糕的项目。
 

@@ -188,7 +188,9 @@ $CPI = \dfrac{\text{总时钟周期数}}{\text{总指令数}} = \sum_{i=1}^n \le
 
 ### 性能总结：经典 CPU 性能公式
 
-$\text{CPU Time} = \text{指令数 (IC)} \times \text{CPI} \times \text{时钟周期 (T_c)} = IC \times CPI \times T_c = \dfrac{IC \times CPI}{f} \quad (f = 1/T_c)$
+$$\text{CPU Time} = IC \times CPI \times T_c$$
+
+$$\text{CPU Time} = \frac{IC \times CPI}{f} \quad (f = 1/T_c)$$
 
 性能取决于：
 - **算法 (Algorithm)**：影响 IC，也可能影响 CPI

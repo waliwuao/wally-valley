@@ -6,8 +6,6 @@ tags:
   - Computer_Organization
 ---
 
-# 第4讲：程序编译链接与性能评估
-
 ## 本讲提纲 (Outline)
 - 程序的编译、链接与加载 (Program Compilation, Linking, and Loading)
 - 性能概念与评估方法 (Performance Concepts and Evaluation Methods)

@@ -6,8 +6,6 @@ tags:
   - Computer_Organization
 ---
 
-# 第5讲：整数算术运算
-
 ## 本讲提纲 (Outline)
 - 加减法与溢出 (Addition/Subtraction and Overflow)
 - 整数乘法 (Integer Multiplication)

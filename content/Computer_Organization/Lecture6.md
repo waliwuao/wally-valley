@@ -6,8 +6,6 @@ tags:
   - Computer_Organization
 ---
 
-# 计算机组成原理 第6讲：浮点数标准与算术
-
 ## 浮点数 (Floating Point)
 - 用于表示非整数的数值表示法，类似科学计数法。
 - 组成：**符号 (Sign)**、**尾数/有效数 (Mantissa / Significand)**、**指数 (Exponent)**。

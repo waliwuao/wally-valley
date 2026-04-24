@@ -6,7 +6,6 @@ tags:
   - Computer_Organization
 ---
 
-# 第3讲：指令编码、分支跳转与不同ISA
 
 ## 本讲提纲 (Outline)
 - 指令编码格式 (Instruction Encoding Formats)

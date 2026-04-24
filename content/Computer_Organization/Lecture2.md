@@ -6,7 +6,6 @@ tags:
   - Computer_Organization
 ---
 
-# 计算机组成原理 第2讲：过程调用与非叶子过程
 
 ## 本讲提纲 (Outline)
 - 过程调用 (Procedure Call)

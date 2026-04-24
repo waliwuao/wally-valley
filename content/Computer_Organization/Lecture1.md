@@ -6,8 +6,6 @@ tags:
   - Computer_Organization
 ---
 
-# 计算机组成原理 第1讲：RISC-V 汇编基础 (Computer Organization Lecture 1)
-
 ## 本讲提纲
 
 - 指令集架构 (Instruction Set Architecture, ISA)

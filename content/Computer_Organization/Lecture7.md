@@ -6,8 +6,6 @@ tags:
   - Computer_Organization
 ---
 
-# 计算机组成原理 第7讲：单周期处理器设计 (Single‑Cycle Processor Design)
-
 ## 本讲提纲 (Outline)
 - 处理器设计方法 (Processor Design Methodology)
 - 数据通路元件 (Datapath Elements)

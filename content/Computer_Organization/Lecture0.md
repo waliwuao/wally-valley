@@ -6,7 +6,7 @@ tags:
   - Computer_Organization
 ---
 
-# 计算机组成原理 第1讲 (Computer Organization Lecture 1)
+# 计算机组成原理 第0讲：课程介绍
 
 ## 简介
 

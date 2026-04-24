@@ -6,7 +6,7 @@ tags:
   - Computer_Organization
 ---
 
-# 计算机组成原理 第2讲：RISC-V 汇编基础 (Computer Organization Lecture 2)
+# 计算机组成原理 第1讲：RISC-V 汇编基础 (Computer Organization Lecture 1)
 
 ## 本讲提纲
 

@@ -6,7 +6,7 @@ tags:
   - Computer_Organization
 ---
 
-# 计算机组成原理 第4讲：程序编译链接与性能评估
+# 第4讲：程序编译链接与性能评估
 
 ## 本讲提纲 (Outline)
 - 程序的编译、链接与加载 (Program Compilation, Linking, and Loading)
@@ -103,21 +103,17 @@ C 程序 → 编译器 → 汇编语言程序 → 汇编器 → 目标模块 (�
 - 数字硬件的运行受**恒定速率时钟 (Constant‑rate Clock)** 控制。
 - 相关概念：
   - **时钟周期 / 时钟周期时间 (Clock Cycle / Clock Period)**：一个时钟周期的持续时间。
-    - 例：250ps = 250×10⁻¹²s = 0.25ns
+    - 例：$250\text{ps} = 250 \times 10^{-12}\text{s} = 0.25\text{ns}$
   - **时钟频率 (Clock Rate / Frequency)**：每秒的周期数。
-    - 例：4.0GHz = 4000MHz = 4.0×10⁹Hz
+    - 例：$4.0\text{GHz} = 4000\text{MHz} = 4.0 \times 10^{9}\text{Hz}$
 
 常见单位：s, ms, μs, ns, ps … ； Hz, KHz, MHz, GHz …
 
 ### CPU 时间 (CPU Time)
 
-\[
-\text{CPU Time} = \text{时钟周期数 (No. of Clock Cycles)} \times \text{时钟周期 (Clock Period)}
-\]
+$\text{CPU Time} = \text{时钟周期数 (No. of Clock Cycles)} \times \text{时钟周期 (Clock Period)}$
 
-\[
-= \frac{\text{时钟周期数}}{\text{时钟频率 (Clock Rate)}}
-\]
+$= \dfrac{\text{时钟周期数}}{\text{时钟频率 (Clock Rate)}}$
 
 - 提高性能可来自：减少时钟周期数，或提高时钟频率。
 - 硬件设计者常常需要在时钟频率与时钟周期数之间**权衡 (Trade‑off)**。
@@ -128,25 +124,19 @@ C 程序 → 编译器 → 汇编语言程序 → 汇编器 → 目标模块 (�
 - 设计计算机 B：目标 6s CPU 时间。但时钟加快会导致周期数变为 A 的 1.2 倍。
 - B 的时钟需多快？
 
-\[
-\text{Clock Rate}_B = \frac{\text{Clock Cycles}_B}{\text{CPU Time}_B} = \frac{1.2 \times \text{Clock Cycles}_A}{6s}
-\]
+$\text{Clock Rate}_B = \dfrac{\text{Clock Cycles}_B}{\text{CPU Time}_B} = \dfrac{1.2 \times \text{Clock Cycles}_A}{6s}$
 
-\[
-\text{Clock Cycles}_A = \text{CPU Time}_A \times \text{Clock Rate}_A = 10s \times 2\text{GHz} = 20 \times 10^9
-\]
+$\text{Clock Cycles}_A = \text{CPU Time}_A \times \text{Clock Rate}_A = 10s \times 2\text{GHz} = 20 \times 10^9$
 
-\[
-\text{Clock Rate}_B = \frac{1.2 \times 20 \times 10^9}{6s} = \frac{4 \times 10^9 \text{ cycles}}{s} = 4\text{GHz}
-\]
+$\text{Clock Rate}_B = \dfrac{1.2 \times 20 \times 10^9}{6s} = \dfrac{4 \times 10^9 \text{ cycles}}{s} = 4\text{GHz}$
 
 所以 B 需要 4 GHz 的时钟频率。
 
 ### 指令数与 CPI (Instruction Count and CPI)
 
-\[ \text{时钟周期数 (Clock Cycles)} = \text{指令数 (Instruction Count)} \times \text{平均每指令周期数 (Cycles per Instruction, CPI)} \]
+$ \text{时钟周期数 (Clock Cycles)} = \text{指令数 (Instruction Count)} \times \text{平均每指令周期数 (Cycles per Instruction, CPI)} $
 
-\[ \text{CPU Time} = \frac{\text{指令数} \times \text{CPI} \times \text{时钟周期}}{} = \frac{\text{指令数} \times \text{CPI}}{\text{时钟频率}} \]
+$ \text{CPU Time} = \dfrac{\text{指令数} \times \text{CPI} \times \text{时钟周期}}{} = \dfrac{\text{指令数} \times \text{CPI}}{\text{时钟频率}} $
 
 - CPU 顺序执行指令。
 - **指令数 (Instruction Count, IC)**：由程序、ISA 和编译器共同决定。
@@ -160,17 +150,11 @@ C 程序 → 编译器 → 汇编语言程序 → 汇编器 → 目标模块 (�
 - 计算机 B：Cycle Time = 500ps，CPI = 1.2
 - 相同 ISA。谁更快？快多少？
 
-\[
-\text{CPU Time}_A = I \times CPI_A \times \text{Clock Period}_A = I \times 2.0 \times 250\text{ps} = I \times 500\text{ps}
-\]
+$\text{CPU Time}_A = I \times CPI_A \times \text{Clock Period}_A = I \times 2.0 \times 250\text{ps} = I \times 500\text{ps}$
 
-\[
-\text{CPU Time}_B = I \times CPI_B \times \text{Clock Period}_B = I \times 1.2 \times 500\text{ps} = I \times 600\text{ps}
-\]
+$\text{CPU Time}_B = I \times CPI_B \times \text{Clock Period}_B = I \times 1.2 \times 500\text{ps} = I \times 600\text{ps}$
 
-\[
-\frac{\text{Performance}_A}{\text{Performance}_B} = \frac{\text{Execution time}_B}{\text{Execution time}_A} = \frac{I \times 600\text{ps}}{I \times 500\text{ps}} = 1.2
-\]
+$\dfrac{\text{Performance}_A}{\text{Performance}_B} = \dfrac{\text{Execution time}_B}{\text{Execution time}_A} = \dfrac{I \times 600\text{ps}}{I \times 500\text{ps}} = 1.2$
 
 因此，**A 比 B 快 1.2 倍**。
 
@@ -178,9 +162,7 @@ C 程序 → 编译器 → 汇编语言程序 → 汇编器 → 目标模块 (�
 
 若不同指令类别需要不同周期数，CPI 可由加权平均求出：
 
-\[
-CPI = \frac{\text{总时钟周期数}}{\text{总指令数}} = \sum_{i=1}^n \left(CPI_i \times \frac{\text{第 i 类指令数}}{\text{总指令数}}\right)
-\]
+$CPI = \dfrac{\text{总时钟周期数}}{\text{总指令数}} = \sum_{i=1}^n \left(CPI_i \times \dfrac{\text{第 i 类指令数}}{\text{总指令数}}\right)$
 
 其中 \(\frac{\text{第 i 类指令数}}{\text{总指令数}}\) 即为该类指令的**相对频率 (Relative Frequency)**。
 
@@ -206,9 +188,7 @@ CPI = \frac{\text{总时钟周期数}}{\text{总指令数}} = \sum_{i=1}^n \left
 
 ### 性能总结：经典 CPU 性能公式
 
-\[
-\text{CPU Time} = \text{指令数 (IC)} \times \text{CPI} \times \text{时钟周期 (T_c)} = IC \times CPI \times T_c = \frac{IC \times CPI}{f} \quad (f = 1/T_c)
-\]
+$\text{CPU Time} = \text{指令数 (IC)} \times \text{CPI} \times \text{时钟周期 (T_c)} = IC \times CPI \times T_c = \dfrac{IC \times CPI}{f} \quad (f = 1/T_c)$
 
 性能取决于：
 - **算法 (Algorithm)**：影响 IC，也可能影响 CPI
@@ -231,19 +211,13 @@ CPI = \frac{\text{总时钟周期数}}{\text{总指令数}} = \sum_{i=1}^n \left
   - **静态能耗 (Static Energy)**：无晶体管翻转时的漏电能耗。
 
 - 一次完整的 0→1→0 翻转能耗：
-  \[
-  \text{Energy} \propto \text{Capacitive load} \times \text{Voltage}^2
-  \]
+  $\text{Energy} \propto \text{Capacitive load} \times \text{Voltage}^2$
 
 - 单次 0→1 或 1→0 翻转能耗：
-  \[
-  \text{Energy} \propto \frac{1}{2} \times \text{Capacitive load} \times \text{Voltage}^2
-  \]
+  $\text{Energy} \propto \dfrac{1}{2} \times \text{Capacitive load} \times \text{Voltage}^2$
 
 - **功率 (Power)**，即单位时间能耗：
-  \[
-  \text{Power} \propto \frac{1}{2} \times \text{Capacitive load} \times \text{Voltage}^2 \times \text{Frequency switched}
-  \]
+  $\text{Power} \propto \dfrac{1}{2} \times \text{Capacitive load} \times \text{Voltage}^2 \times \text{Frequency switched}$
 
 ---
 
@@ -280,9 +254,7 @@ CPI = \frac{\text{总时钟周期数}}{\text{总指令数}} = \sum_{i=1}^n \left
   - 性能指标：`ssj_ops` (Server Side Java Operations per Second)
   - 功率指标：Watts (Joules/sec)
 
-\[
-\text{Overall ssj\_ops per watt} = \frac{\sum_{i=0}^{10} ssj\_ops_i}{\sum_{i=0}^{10} power_i}
-\]
+$\text{Overall ssj\_ops per watt} = \dfrac{\sum_{i=0}^{10} ssj\_ops_i}{\sum_{i=0}^{10} power_i}$
 
 **SPECpower_ssj2008 for Xeon X5650 示例：**
 
@@ -300,7 +272,7 @@ CPI = \frac{\text{总时钟周期数}}{\text{总指令数}} = \sum_{i=1}^n \left
 | 10% | 86,784 | 121 |
 | 0% | 0 | 80 |
 
-整体汇总：总 `ssj_ops` = 4,787,166；每瓦性能 = \(\sum ssj\_ops / \sum power\)。
+整体汇总：总 `ssj_ops` = 4,787,166；每瓦性能 = $\frac{\sum ssj\_ops}{\sum power}$。
 
 ---
 

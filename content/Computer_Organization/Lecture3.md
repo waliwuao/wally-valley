@@ -1,5 +1,5 @@
 ---
-title: "Computer Organization Lecture 3"
+title: "第3讲：指令编码、分支跳转与不同ISA"
 date: 2026-04-24
 tags:
   - RISC-V

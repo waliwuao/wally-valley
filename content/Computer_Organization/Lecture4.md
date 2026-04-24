@@ -1,5 +1,5 @@
 ---
-title: "Computer Organization Lecture 4"
+title: "第4讲：程序编译链接与性能评估"
 date: 2026-04-24
 tags:
   - RISC-V

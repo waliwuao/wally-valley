@@ -1,5 +1,5 @@
 ---
-title: "Computer Organization Lecture 1"
+title: "第1讲：RISC-V 汇编基础"
 date: 2026-04-24
 tags:
   - RISC-V

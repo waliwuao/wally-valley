@@ -1,5 +1,5 @@
 ---
-title: "计算机组成原理 第7讲：单周期处理器设计 (Computer Organization Lecture 7)"
+title: "第7讲：单周期处理器设计"
 date: 2026-04-24
 tags:
   - RISC-V

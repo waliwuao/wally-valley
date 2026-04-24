@@ -1,5 +1,5 @@
 ---
-title: "Computer Organization Lecture 5"
+title: "第5讲：整数算术运算"
 date: 2026-04-24
 tags:
   - RISC-V

@@ -1,5 +1,5 @@
 ---
-title: "Computer Organization Lecture 0"
+title: "第0讲：计算机组成原理课程介绍"
 date: 2026-04-24
 tags:
   - RISC-V

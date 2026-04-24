@@ -1,5 +1,5 @@
 ---
-title: "Computer Organization Lecture 2"
+title: "第2讲：过程调用与非叶子过程"
 date: 2026-04-24
 tags:
   - RISC-V

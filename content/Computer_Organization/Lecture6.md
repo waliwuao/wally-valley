@@ -1,5 +1,5 @@
 ---
-title: "计算机组成原理 第6讲：浮点数标准与算术 (Computer Organization Lecture 6)"
+title: "第6讲：浮点数标准与算术"
 date: 2026-04-24
 tags:
   - RISC-V

@@ -1,5 +1,5 @@
 ---
-title: "Scala & SpinalHDL 环境搭建"
+title: "Lecture 1: SpinalHDL环境搭建"
 date: 2026-04-24
 tags:
   - RISC-V
@@ -22,9 +22,12 @@ tags:
 在传统的 Verilog 中，如果我们要根据配置（比如有没有乘法器、需不需要 MMU）来生成不同的 CPU，通常只能用满篇的 `` `ifdef `` 宏定义，或者极其难用的 `generate` 语句。代码会变得像意大利面条拌42号混凝土一样难以阅读。
 
 VexRiscv 选择 Scala 和 SpinalHDL 的根本原因在于其 **Plugin（插件化）架构**。
-利用 Scala 面向对象的特性，VexRiscv 把 CPU 的流水线变成了一个“主板”，而取指单元、解码单元、ALU、分支预测等统统被写成了独立的 Plugin。你需要什么功能，就在实例化的时候把对应的 Plugin “插”进去。Scala 的高级语法会在后台自动为你连线，并在最终将其降维编译成纯粹的、可综合的 Verilog 文件。这种级别的参数化和高度复用，是传统 Verilog 根本无法想象的。
 
-值得一提的是，Spinal还有一个强有力的竞争者**Chisel**，它背靠伯克利，学术界资源极好，生态非常庞大。SpinalHDL 的作者 Charles Papon 最初就是使用 Chisel 的。但他发现早期的 Chisel 有一些痛点：生成的 Verilog 代码**极难阅读**（变量名全是随机乱码，不利于 debug）、时钟域管理容易出错、缺乏某些原生的组合逻辑环检查等。于是他单飞创造了 SpinalHDL。可以说 SpinalHDL 诞生之初就是为了解决 Chisel 的一些工程痛点。
+利用 Scala 面向对象的特性，VexRiscv 把 CPU 的流水线变成了一个“主板”，而取指单元、解码单元、ALU、分支预测等统统被写成了独立的 Plugin。你需要什么功能，就在实例化的时候把对应的 Plugin “插”进去。Scala 的高级语法会在后台自动为你连线，并在最终将其降维编译成纯粹的、可综合的 Verilog 文件。
+
+值得一提的是，Spinal还有一个强有力的竞争者**Chisel**，它背靠伯克利，学术界资源极好，生态非常庞大。
+
+SpinalHDL 的作者 Charles Papon 最初就是使用 Chisel 的。但他发现早期的 Chisel 有一些痛点：生成的 Verilog 代码**极难阅读**（变量名全是随机乱码，不利于 debug）、时钟域管理容易出错、缺乏某些原生的组合逻辑环检查等。于是他单飞创造了 SpinalHDL。可以说 SpinalHDL 诞生之初就是为了解决 Chisel 的一些工程痛点。
 
 ## Scala & SpinalHDL 环境搭建
 

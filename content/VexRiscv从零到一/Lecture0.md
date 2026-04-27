@@ -1,5 +1,5 @@
 ---
-title: "前言"
+title: "Lecture 0: Project 前言"
 date: 2026-04-21
 tags:
   - RISC-V

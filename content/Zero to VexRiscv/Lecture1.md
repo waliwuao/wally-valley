@@ -25,6 +25,8 @@ VexRiscv 选择 Scala 和 SpinalHDL 的根本原因在于其 **Plugin（插件�
 
 利用 Scala 面向对象的特性，VexRiscv 把 CPU 的流水线变成了一个“主板”，而取指单元、解码单元、ALU、分支预测等统统被写成了独立的 Plugin。你需要什么功能，就在实例化的时候把对应的 Plugin “插”进去。Scala 的高级语法会在后台自动为你连线，并在最终将其降维编译成纯粹的、可综合的 Verilog 文件。
 
+## Chisel vs Spinal
+
 值得一提的是，Spinal还有一个强有力的竞争者**Chisel**，它背靠伯克利，学术界资源极好，生态非常庞大。
 
 SpinalHDL 的作者 Charles Papon 最初就是使用 Chisel 的。但他发现早期的 Chisel 有一些痛点：生成的 Verilog 代码**极难阅读**（变量名全是随机乱码，不利于 debug）、时钟域管理容易出错、缺乏某些原生的组合逻辑环检查等。于是他单飞创造了 SpinalHDL。可以说 SpinalHDL 诞生之初就是为了解决 Chisel 的一些工程痛点。

@@ -1,5 +1,5 @@
 ---
-title: "Spinal-Vexriscv project intro"
+title: "VexRiscv 从零到一"
 date: 2026-04-21
 tags:
   - RISC-V
@@ -8,7 +8,7 @@ tags:
   - project
 ---
 
-# Spinal-Vexriscv project intro
+# VexRiscv 从零到一
 
 在数字逻辑课程的学习中，我曾被要求直接编写 Verilog，在开发板上实现一个矩阵乘法计算器。这是我截至目前做过的最糟糕的项目。
 

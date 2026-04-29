@@ -29,7 +29,7 @@ VexRiscv 提供了一种基于**插件（Plugin）**的动态构建方案：
 使用这个框架，你可以得到极高的代码复用性，一个插件既可以适配二级流水线，也可以适配五级流水线。
 
 并且你的硬件几乎零冗余，因为框架在生成时会完全移除那些没有启动的功能，实现真正的**按需构建**
-![Vexriscv_Structure](https://github.com/waliwuao/wally-valley/blob/v4/asset/vexriscv_struct.png)
+![Vexriscv_Structure](https://raw.githubusercontent.com/waliwuao/wally-valley/v4/asset/vexriscv_struct.png)
 *VexRiscv 插件化流水线示意图*
 
 ---

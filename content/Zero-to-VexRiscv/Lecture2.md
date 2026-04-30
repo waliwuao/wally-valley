@@ -20,7 +20,7 @@ VexRiscv 并不是一个传统意义上用Verilog或Chisel编写的**固定**CPU
 - 连线冗余：即使某个信号只在第一级和第五级使用，你也必须在中间的第二、三、四级手动编写“过路”转发逻辑。
 - 维护困难：逻辑处理与流水线控制逻辑（如 Stall/Flush）紧紧耦合在一起。
 
-VexRiscv 提供了一种基于**插件（Plugin）**的动态构建方案：
+VexRiscv 提供了一种基于**插件 Plugin**的动态构建方案：
 
 - 按需互联（Demand-driven Interconnect）：不再使用集中式的大 Bundle 传输信号。每个信号（Stageable）是独立的，框架会自动分析各插件对信号的引用情况，自动生成跨阶段的寄存器连线。
 - 逻辑注入（Logic Injection）：Pipeline 骨架本身不包含具体指令的处理逻辑。所有的操作（如译码、运算、访存）都由插件在 build 阶段动态“注入”到对应的流水线阶段（Stage）中。
@@ -42,22 +42,22 @@ VexRiscv 提供了一种基于**插件（Plugin）**的动态构建方案：
 
 Stageable是一个快递标签，和需要传递的快递 **Data** 捆绑在一起，包含 **Name** 和 **Datatype**两个属性。
 
-当 StageA 需要向 StageB 寄快递 **Data** 时，StageA 只需要在快递上贴上标签 **Stageable**, StageB 也需要填写信息，说明自己需要带有指定标签的快递，后续的快递员 **Pipeline**就会 StageA 和 StageB 填写的信息，创建跨阶段的寄存器连线，将快递送到StageB手中。
+当 StageA 需要向 StageB 寄快递 **Data** 时，StageA 只需要在快递上贴上标签 **Stageable**, StageB 也需要填写信息说明自己需要带有指定标签的快递，接着快递员 **Pipeline**就会根据 StageA 和 StageB 填写的信息，创建跨阶段的寄存器连线，将快递送到StageB手中。
 
 ---
 
 ### 2. Stage：流水线阶段的“仓库”
 
-每一个 `Stage` 都对z着 CPU 中的一个物理阶段，但是在 Vexriscv 中 Stage 只是这个阶段的 “仓库”，Stage 内部不包含任何实质性的操作逻辑，所有的具体操作逻辑都需要后续插件被激活后插入。
+每一个 `Stage` 都对应着 CPU 中的一个物理阶段，但是在 Vexriscv 中 Stage 只是这个阶段的 “仓库”，Stage 内部不包含任何实质性的操作逻辑，所有的具体操作逻辑都需要后续插件被激活后插入。
 
 Stage 包含三个重要的属性：
 - Input: 包含所有这个阶段需要的信号对应的 Stageable, 初始为空，由插件在(Build)阶段填写
 - Output:包含所有这个阶段输出的信号对应的 Stageable, 初始为空，由插件在(Build)阶段填写
 - Insert:包含所有这个阶段产生的信号对应的 Stageable, 初始为空，由插件在(Build)阶段填写，所有Insert默认自动加入Output
 
-值得注意的是，Insert 的数据不仅仅会自动加入 Output，更重要的是它标志着该信号在流水线中的 “起始点”。
+值得注意的是，Insert 的数据不仅仅会自动加入 Output，更重要的是它标志着该信号在流水线中的 “起始点”。后续流水线会仔细阅读记录每一个Stage的 Input、Output、Insert 属性并创建寄存器连线。
 
-后续流水线会仔细阅读记录每一个Stage的 Input、Output、Insert 属性并创建寄存器连线。
+---
 
 Stage 还包含一个**仲裁逻辑**(Arbitration),它采用**分布式握手协议（Distributed Handshake Protocol）**，决定了指令何时可以进入下一级，何时必须停下来等待，以及何时需要被撤销。
 
@@ -98,7 +98,7 @@ VexRiscv 的所有功能都是通过插件实现的。一个插件通常包含�
 - 反射命名：Pipeline会通过scala的**反射机制**获取你在代码中定义的变量名。它会遍历所有信号并赋予它们“人类可读”的名字（如 execute_to_memory_PC），这让后期的硬件仿真和调试效率提升了数倍。
 
 
-## 总结
+## 本讲总结
 
 回顾整讲，VexRiscv 把一个 CPU 的设计拆成了四个干净的概念：**Stageable** 是灵活贴取的信号标签，**Stage** 是等待注入逻辑的空仓库，**Plugin** 是按需开动的加工机器，而 **Pipeline** 则是统筹全局的系统集成器。它们各司其职，把硬件执行逻辑和流水线物理结构彻底解耦。
 
